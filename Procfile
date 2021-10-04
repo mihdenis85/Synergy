@@ -1,0 +1,1 @@
+web: gunicorn School146.__main__:app
