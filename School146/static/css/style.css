@@ -1,0 +1,145 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	min-height: 100vh;
+	font-family: Arial;
+	-moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+a {
+	text-decoration: none;
+}
+h1 {
+	margin: 0;
+}
+img {
+	image-rendering: -moz-crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: crisp-edges;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+ul {
+	padding: 0;
+	list-style-type: none;
+}
+button {
+	border: none;
+	outline: none;
+}
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding-top: 10px;
+	vertical-align: bottom;
+	align-items: center;
+}
+li {
+	text-decoration: none;
+}
+footer {
+	background-color: #FFF4E4;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+content {
+	padding-top: 1000px;
+}
+menu {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	background-color: #FFD18E3D;
+	position: fixed;
+	width: 100%;
+	margin: 0px;
+	padding-top: 10px;
+	opacity: 0;
+}
+
+.logo {
+	width: 10%;
+}
+.logo img {
+	display: block;
+  	width: 100%;
+}
+.main_text {
+	width: 60%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.main_text h1 {
+	font-style: normal;
+	font-weight: 600;
+	text-align: center;
+	color: #051F57;
+	font-size: 24pt;
+}
+.main_text p {
+	font-style: italic;
+	font-weight: normal;
+	text-align: center;
+	color: #717F9F;
+	width: 70%;
+	font-size: 12pt;
+}
+.menu {
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	background-color: #FFD18E3D;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.point_of_menu {
+	width: 10%;
+	color: #0049B0;
+	text-align: center;
+	font-size: 12pt;
+}
+.icons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: auto;
+	width: 10%;
+	margin: auto;
+}
+.menu_line {
+	opacity: 0;
+	transition: 0.5s;
+	margin: 0px;
+	width: 0%;
+	margin-left: 10%;
+	border-color: #0049B0;
+	background-color: #0049B0;
+}
+.menu_logo {
+	width: 5%;
+}
+.menu_logo img {
+	width: 100%;
+}
+
+.point_of_menu:hover .menu_line{ 
+	opacity: 1;
+	transition: 0.5s;
+	margin: 0px;
+	width: 80%;
+	margin-left: 10%;
+	border-color: #0049B0;
+	background-color: #0049B0;
+}
