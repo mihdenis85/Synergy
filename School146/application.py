@@ -1,8 +1,11 @@
+import os
 from datetime import timedelta
 
-from flask import Flask
+from flask import Flask, render_template
+from flask_login import LoginManager
 
 from School146.data import db_session
+from School146.data.models.users import User
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'very_secret_key_jwkjldjwkdjlkwdkwjdldwhifwifhwiuhiuefhwiufhiuehf0f9wwefw'
@@ -18,6 +21,9 @@ def load_user(user_id):
     return user
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 

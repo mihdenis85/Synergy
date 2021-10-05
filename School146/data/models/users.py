@@ -1,8 +1,7 @@
 from flask_login import UserMixin
-from sqlalchemy import Integer, Column, String
+from sqlalchemy import Column, Integer, String, orm
 from sqlalchemy_serializer import SerializerMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from wtforms.ext.sqlalchemy import orm
 
 from School146.data.db_session import SqlAlchemyBase
 
