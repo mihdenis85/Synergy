@@ -40,6 +40,7 @@ header {
 	padding-top: 10px;
 	vertical-align: bottom;
 	align-items: center;
+	background-color: #FFD18E3D;
 }
 li {
 	text-decoration: none;
@@ -55,14 +56,17 @@ content {
 }
 menu {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	flex-direction: row;
 	background-color: #FFD18E3D;
-	position: fixed;
+	position: static;
 	width: 100%;
 	margin: 0px;
+	padding: 0px;
 	padding-top: 10px;
-	opacity: 0;
+	opacity: 1;
+	padding-bottom: 10px;
+	align-items: center;
 }
 
 .logo {
@@ -99,13 +103,13 @@ menu {
 	width: 100%;
 	display: flex;
 	flex-direction: row-reverse;
-	justify-content: flex-start;
-	background-color: #FFD18E3D;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	justify-content: space-around;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	vertical-align: middle;
 }
 .point_of_menu {
-	width: 10%;
+	width: 100%;
 	color: #0049B0;
 	text-align: center;
 	font-size: 12pt;
@@ -117,6 +121,10 @@ menu {
 	width: auto;
 	width: 10%;
 	margin: auto;
+}
+.icon {
+	opacity: 0.5;
+	transition: 0.5s;
 }
 .menu_line {
 	opacity: 0;
@@ -133,6 +141,10 @@ menu {
 .menu_logo img {
 	width: 100%;
 }
+#top_menu_logo {
+	opacity: 0;
+	width: 3%;
+}
 
 .point_of_menu:hover .menu_line{ 
 	opacity: 1;
@@ -142,4 +154,8 @@ menu {
 	margin-left: 10%;
 	border-color: #0049B0;
 	background-color: #0049B0;
+}
+.icon:hover {
+	opacity: 1;
+	transition: 0.5s;
 }

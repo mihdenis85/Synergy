@@ -1,13 +1,18 @@
 "use strict";
 window.onscroll = function() {
-  let elem = document.getElementById("top_menu");
+  let elem = document.getElementById("header");
   let data = elem.getBoundingClientRect();
-  if (data.y <= 0) {
-  	let menu = document.getElementById("usual_menu");
-  	menu.style = "opacity: 1; transition: 0.5s;"
+  console.log(data.y, data.height);
+  if (data.y + data.height < 0) {
+  	let menu = document.getElementById("top_menu");
+  	menu.style = "position: fixed;";
+    let logo = document.getElementById("top_menu_logo");
+    logo.style = "opacity: 1; transition: 0.5s;";
   }
   else {
-  	let menu = document.getElementById("usual_menu");
-  	menu.style = "opacity: 0; transition: 0.5s;"
+  	let menu = document.getElementById("top_menu");
+  	menu.style = "position: static";
+    let logo = document.getElementById("top_menu_logo");
+    logo.style = "opacity: 0; transition: 0.5s;";
   }
 }
