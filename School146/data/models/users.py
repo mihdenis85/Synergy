@@ -14,11 +14,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     name = Column(String)
     email = Column(String, index=True, unique=True)
     hashed_password = Column(String)
-    theme = Column(String)
 
-    timetable = orm.relation('Timetable', back_populates='user')
-
-    homework = orm.relation('Homework', back_populates='user')
 
 
     def set_password(self, password):
