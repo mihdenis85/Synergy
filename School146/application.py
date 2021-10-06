@@ -1,17 +1,23 @@
 import os
 from datetime import timedelta
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
-from werkzeug.utils import redirect
+from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
+from werkzeug.utils import redirect, secure_filename
 
 from School146.data import db_session
+from School146.data.models import Article
 from School146.data.models.users import User
-from School146.forms import RegisterForm, LoginForm
+from School146.forms import RegisterForm, LoginForm, ArticleForm
+
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
+UPLOAD_FOLDER = '/users_photo'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'very_secret_key_jwkjldjwkdjlkwdkwjdldwhifwifhwiuhiuefhwiufhiuehf0f9wwefw'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=365)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -85,6 +91,41 @@ def login():
             db.close()
             return render_template('login.html', form=login_form, message="Неправильный пароль")
     return render_template('login.html', form=login_form)
+
+
+@app.route('/add_article', methods=['GET', 'POST'])
+@login_required
+def add_article():
+    form = ArticleForm()
+    if form.validate_on_submit():
+        assets_dir = os.path.join(
+            os.path.dirname(app.instance_path), 'School146/assets'
+        )
+        db = db_session.create_session()
+        article = Article()
+        article.title = form.title.data
+        article.text = form.text.data
+        if form.picture.data:
+            f = form.picture.data
+
+            filename = secure_filename(f.filename)
+            article.picture = str(os.path.join('School146/assets', filename))
+            f.save(os.path.join(assets_dir, filename))
+
+        db.add(article)
+        db.commit()
+        db.close()
+        return redirect('/')
+    return render_template('add_article.html', form=form)
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+def upload_file(request):
+    pass
 
 
 @app.route('/logout')

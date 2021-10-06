@@ -1,6 +1,9 @@
+import re
+
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, FileField, SubmitField
-from wtforms.validators import DataRequired
+from flask_wtf.file import FileField
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import DataRequired, regexp
 
 
 class ArticleForm(FlaskForm):

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <h2>Добавление новой статьи</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(class="form-control") }}<br>
+            {% for error in form.title.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.text.label }}<br>
+            {{ form.text(class="form-control") }}<br>
+            {% for error in form.text.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.picture.label }}<br>
+            {{ form.picture(class="form-control", type="file") }}<br>
+            {% for error in form.text.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+        </p>
+
+        <p class="simple-line">{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <button class="btn btn-secondary text-center position-relative" style="margin-left: 10px;"><a class="button-note-text stretched-link" href="/tasks" style="text-decoration: none; color: #ccf;">Back</a></button>
+    </form>
+</main>
+
+{% endblock %}
