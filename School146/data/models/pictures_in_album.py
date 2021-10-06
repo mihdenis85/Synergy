@@ -9,6 +9,7 @@ class AlbumPicture(SqlAlchemyBase, SerializerMixin):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String)
+    path_to_picture = Column(String)
     album_id = Column(Integer, ForeignKey('albums.id'))
 
     album = orm.relation('Album')
