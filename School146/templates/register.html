@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="parent">
+    <div class="registration">
+<b> Регистрация </b>
+    <form action="" method="post" class="form-w">
+    {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            {% if message %}
+            <div class="text-register">{{message}}</div>
+            {% endif %}
+
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control") }}
+            {% for error in form.name.errors %}
+                <p class="text-register" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}<br>
+
+            {{ form.password.label }}<br>
+            {{ form.password(class="form-control") }}
+            {% for error in form.password.errors %}
+                <p class="text-register" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}<br>
+
+            {{ form.password_again.label }}<br>
+            {{ form.password_again(class="form-control") }}
+            {% for error in form.password_again.errors %}
+                <p class="text-register" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}<br>
+
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control", type="email") }}
+            {% for error in form.email.errors %}
+                <p class="text-register" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}<br>
+
+            {{ form.submit(type="submit", class="register-button") }}
+    </form>
+    </div>
+</div>>
+{% endblock %}

@@ -10,4 +10,4 @@ class Album(SqlAlchemyBase, SerializerMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String)
 
-    pictures = orm.relation('Picture', back_populates='album')
+    pictures = orm.relation('AlbumPicture', back_populates='album')

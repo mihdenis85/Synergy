@@ -10,7 +10,6 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    login = Column(String)
     name = Column(String)
     email = Column(String, index=True, unique=True)
     hashed_password = Column(String)
