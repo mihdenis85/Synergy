@@ -1,3 +1,3 @@
-from School146.application import run
+from School146.__main__ import run
 
 run()
