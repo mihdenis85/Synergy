@@ -3,7 +3,6 @@ from datetime import timedelta
 
 from flask import Flask, render_template, url_for, request, jsonify
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
-from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 from werkzeug.utils import redirect, secure_filename
 
 from School146.data import db_session
