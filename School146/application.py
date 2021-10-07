@@ -1,7 +1,7 @@
 import os
 from datetime import timedelta
 
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 from flask_wtf import CSRFProtect
@@ -111,7 +111,7 @@ def add_article():
     form = ArticleForm()
     if form.validate_on_submit():
         assets_dir = os.path.join(
-            os.path.dirname(app.instance_path), 'School146/assets'
+            os.path.dirname(app.instance_path), 'School146/static/user_img'
         )
         db = db_session.create_session()
         article = Article()
@@ -120,7 +120,7 @@ def add_article():
         if form.picture.data:
             f = form.picture.data
             filename = secure_filename(f.filename)
-            article.picture = str(os.path.join('School146/assets', filename))
+            article.picture = filename
             f.save(os.path.join(assets_dir, filename))
         else:
             db.close()
@@ -131,6 +131,21 @@ def add_article():
         db.close()
         return redirect('/')
     return render_template('add_article.html', form=form, add_edit="Добавление")
+
+
+@app.route('/article_info/<int:id>', methods=['GET', 'POST'])
+def article_info(id):
+    db = db_session.create_session()
+    article = db.query(Article).filter(Article.id == id).first()
+    if not article:
+        return redirect(url_for('index'))
+    db.close()
+    if current_user.is_authenticated:
+        editable = True
+    else:
+        editable = False
+    return render_template('article_info.html', title=article.title, text=article.text, picture=article.picture,
+                           editable=editable)
 
 
 @app.route('/edit_user_info', methods=['GET', 'POST'])

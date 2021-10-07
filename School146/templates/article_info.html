@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="margin: 0 2%;" >
+<p>
+    <b> {{ title }} </b><br><br>
+    <b> {{ text }} </b> <br>
+    <img src="../static/user_img/{{ picture }}" alt="Image" width="20%" height="20%">
+    {% if editable %}
+    <a href="#"> Изменить </a> <br>
+    {% else %}
+    {% endif %}
+</p>
+</div>
+
+{% endblock %}
