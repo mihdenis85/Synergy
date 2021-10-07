@@ -4,6 +4,7 @@ from datetime import timedelta
 from flask import Flask, render_template, url_for, request
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
+from flask_wtf import CSRFProtect
 from werkzeug.utils import redirect, secure_filename
 
 from School146.data import db_session
@@ -14,10 +15,14 @@ from School146.forms import RegisterForm, LoginForm, ArticleForm
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 UPLOAD_FOLDER = '/users_photo'
 
+csrf = CSRFProtect()
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'very_secret_key_jwkjldjwkdjlkwdkwjdldwhifwifhwiuhiuefhwiufhiuehf0f9wwefw'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=365)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
+csrf.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -93,6 +98,13 @@ def login():
     return render_template('login.html', form=login_form)
 
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
 @app.route('/add_article', methods=['GET', 'POST'])
 @login_required
 def add_article():
@@ -107,31 +119,22 @@ def add_article():
         article.text = form.text.data
         if form.picture.data:
             f = form.picture.data
-
             filename = secure_filename(f.filename)
             article.picture = str(os.path.join('School146/assets', filename))
             f.save(os.path.join(assets_dir, filename))
+        else:
+            db.close()
+            return render_template('add_article.html', form=form, message='Картинка обязательна', add_edit="Добавление")
 
         db.add(article)
         db.commit()
         db.close()
         return redirect('/')
-    return render_template('add_article.html', form=form)
+    return render_template('add_article.html', form=form, add_edit="Добавление")
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-
-def upload_file(request):
-    pass
-
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
+@app.errorhandler(401)
+def unauth(error):
     return redirect(url_for('index'))
 
 

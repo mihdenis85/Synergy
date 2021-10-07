@@ -2,7 +2,7 @@
 
 {% block content %}
 <main class="container">
-    <h2>Добавление новой статьи</h2>
+    <h2>{{ add_edit }} новой статьи</h2>
     <form method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         {{ form.csrf_token }}
@@ -29,7 +29,7 @@
 
         <p>
             {{ form.picture.label }}<br>
-            {{ form.picture(class="form-control", type="file") }}<br>
+            {{ form.picture(class="form-control", type="file", accept=".jpg,.png") }}<br>
             {% for error in form.text.errors %}
             <p class="alert alert-danger" role="alert">
                 {{ error }}
