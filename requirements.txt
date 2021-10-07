@@ -7,3 +7,4 @@ wtforms
 SQLAlchemy-serializer
 psycopg2
 gunicorn
+werkzeug
