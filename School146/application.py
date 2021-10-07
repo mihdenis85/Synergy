@@ -10,7 +10,7 @@ from werkzeug.utils import redirect, secure_filename
 from School146.data import db_session
 from School146.data.models import Article
 from School146.data.models.users import User
-from School146.forms import RegisterForm, LoginForm, ArticleForm
+from School146.forms import RegisterForm, LoginForm, ArticleForm, EditUserForm
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 UPLOAD_FOLDER = '/users_photo'
@@ -91,7 +91,7 @@ def login():
         if user.check_password(login_form.password.data):
             login_user(user, remember=True)
             db.close()
-            return redirect('/')
+            return redirect('/user_info')
         else:
             db.close()
             return render_template('login.html', form=login_form, message="Неправильный пароль")
@@ -131,6 +131,41 @@ def add_article():
         db.close()
         return redirect('/')
     return render_template('add_article.html', form=form, add_edit="Добавление")
+
+
+@app.route('/edit_user_info', methods=['GET', 'POST'])
+@login_required
+def edit_user_info():
+    all_data = {
+        'email': current_user.email,
+        'name': current_user.name
+    }
+    form = EditUserForm(data=all_data)
+    if form.validate_on_submit():
+        db = db_session.create_session()
+        password = form.password.data
+        user_now = db.query(User).filter(User.id == current_user.id).first()
+        if user_now.check_password(password):
+            user_now.name = form.name.data
+            emails = db.query(User).filter(User.email == form.email.data).all()
+            if len(emails) >= 2 or (len(emails) == 1 and current_user.email != form.email.data):
+                db.close()
+                return render_template('edit_user_info.html', form=form,
+                                       message="Такая почта уже используется в другом аккаунте")
+            else:
+                user_now.email = form.email.data
+            db.commit()
+            db.close()
+            return redirect('/user_info')
+        else:
+            return render_template('edit_user_info.html', form=form, message="Неправильный пароль")
+    return render_template('edit_user_info.html', form=form)
+
+
+@app.route('/user_info')
+@login_required
+def user_info():
+    return render_template('user_info.html')
 
 
 @app.errorhandler(401)

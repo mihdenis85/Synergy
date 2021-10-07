@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="margin: 0 2%;" >
+<p class="akk">
+    <b> Имя: </b> {{ current_user.name }}<br>
+    <b> Email: </b> {{ current_user.email }}<br>
+    <a href="/edit_user_info"> Изменить </a> <br>
+    <a href="/logout"> Выйти </a>
+</p>
+</div>
+
+{% endblock %}

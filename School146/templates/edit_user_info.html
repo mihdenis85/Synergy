@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="parent">
+    <div class="auth">
+    <b>Изменение данных аккаунта</b>
+    <form class="card-body" method="POST">
+        {% if message %}
+        <div class="text">{{ message }}</div>
+        {% endif %}
+
+        {{ form.hidden_tag() }}
+
+        {{ form.email.label }}<br>
+        {% for error in form.email.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            {{ form.email(class="form-control") }}
+        </div>
+
+        {{ form.name.label }}<br>
+        {% for error in form.name.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            {{ form.name(class="form-control") }}
+        </div>
+
+        {{ form.password.label }}<br>
+        {% for error in form.password.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        <div class="form-group">
+            {{ form.password(class="form-control") }}
+        </div>
+
+
+        {{ form.submit() }}
+             </form>
+        </div>
+</div>
+{% endblock %}
