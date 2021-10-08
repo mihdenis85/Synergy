@@ -4,12 +4,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4" style="margin: 0 2%;" >
+<div class="container mt-4">
     <p class="content_title"> {{ title }} </p>
+    <img src="../static/user_img/{{ picture }}" alt="Image" class="article_img">
     <p class="content_text"> {{ text }} </p>
-    <img src="../static/user_img/{{ picture }}" alt="Image" class="content_img">
     {% if editable %}
-    <a href="#"> Изменить </a>
+    	<a href="#" align="center"><p align="center" class="login_button" style="margin-left: 40%; width: 20%;">Изменить</p></a>
     {% else %}
     {% endif %}
 </div>
