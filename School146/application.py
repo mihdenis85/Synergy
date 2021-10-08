@@ -3,6 +3,7 @@ from datetime import timedelta
 
 from flask import Flask, render_template, url_for, request, jsonify
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
+from flask_wtf import CSRFProtect
 from werkzeug.utils import redirect, secure_filename
 
 from School146.data import db_session
@@ -14,11 +15,13 @@ ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 UPLOAD_FOLDER = '/users_photo'
 
 
+csrf = CSRFProtect()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'very_secret_key_jwkjldjwkdjlkwdkwjdldwhifwifhwiuhiuefhwiufhiuehf0f9wwefw'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=365)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
+csrf.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)

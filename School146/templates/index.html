@@ -1,19 +1,75 @@
-{% extends 'base.html' %}
-
-{% block head %}
-{% endblock %}
-
-{% block content %}
-<div class="article tile post-1">
-				<div class="article_text">
-	                <h2 class="article_h" id="article_h_0">Lorem ipsum dolor sit amet</h2>
-	                <p class="article_p" id="article_text_0">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
-            	</div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Неофициальный сайт МАОУ "СОШ №146"</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="../static/js/script.js"></script>
+	</head>
+	<body onload="main()">
+		<!-- Header part -->
+		<header id="header">
+			<div class="logo" id="top_menu_logo">
+				<a href="/">
+					<img src="../static/img/logo.png" alt="logo">
+				</a>
+			</div>
+			<div id="top_menu" class="menu">
+				<ul class="point_menu">
+					{% if current_user.is_authenticated %}
+                    <a href="/user_info" class="point_of_menu"><li>{{ current_user.name }}<hr class="menu_line"></li></a>
+                    {% else %}
+                    <a href="/login" class="point_of_menu"><li>Войти<hr class="menu_line"></li></a>
+                    {% endif %}
+					<a href="content.html" class="point_of_menu"><li>Галерея<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Новости<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Олимпиады<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Архив газеты<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Столовая<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Аттестации<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Расписание<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Предметы<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>О школе<hr class="menu_line"></li></a>
+				</ul>
+			</div>
+		</header>
+		<!-- Slider -->
+		<div class="slider" id="slider">
+			<div class="slider_background">
+				<a href="#" onclick="prev_slide()">
+					<div class="arrow">
+						<img src="../static/img/left_arrow.png">
+					</div>
+				</a>
+				<div class="slider_container" id="slide">
+					<h1 id="slider_h"></h1>
+					<p id="slider_text"></p>
+				</div>
+				<a href="#" onclick="next_slide()">
+					<div class="arrow">
+						<img src="../static/img/right_arrow.png">
+					</div>
+				</a>
+			</div>
+		</div>
+		<!-- Main part -->
+		<content class="tiles">
+	        <a href="content.html" class="tile post-1">
+				<div class="article">
+					<div class="article_text">
+		                <h2 class="article_h" id="article_h_0">Lorem ipsum dolor sit amet</h2>
+		                <p class="article_p" id="article_text_0">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
+	            	</div>
+	            </div>
+        	</a>
             <div class="tile post-2"></div>
             <div class="tile post-3"></div>
             <div class="tile post-4"></div>
-	        <a href="#" class="tile post-5">
+	        <a href="content.html" class="tile post-5">
 	            <div class="article">
 					<div class="article_text">
 		                <h2 class="article_h" id="article_h_1">Lorem ipsum dolor sit amet</h2>
@@ -22,7 +78,7 @@
 	            </div>
         	</a>
             <div class="tile post-6"></div>
-	        <a href="#" class= "tile post-11">
+	        <a href="content.html" class= "tile post-11">
 	       		<div class="article">
 					<div class="article_text">
 		                <h2 class="article_h" id="article_h_2">Lorem ipsum dolor sit amet</h2>
@@ -33,7 +89,7 @@
             <div class="tile post-8"></div>
             <div class="tile post-9"></div>
             <div class="tile post-10"></div>
-	        <a href="#" class="tile post-7">
+	        <a href="content.html" class="tile post-7">
 	        	<div class="article">
 					<div class="article_text">
 		                <h2 class="article_h" id="article_h_3">Lorem ipsum dolor sit amet</h2>
@@ -43,4 +99,18 @@
         	</a>
             <div class="tile post-12"></div>
             <div class="tile post-13"></div>
-{% endblock %}
+		</content>
+		<!-- Fotter part -->
+		<footer>
+			<ul class="icons">
+				<a href="https://www.facebook.com/school146perm" class="icon"><li><img src="../static/img/facebook.png"></li></a>
+				<a href="https://www.instagram.com/school146perm/" class="icon"><li><img src="../static/img/instagram.png"></li></a>
+				<a href="https://twitter.com/school146" class="icon"><li><img src="../static/img/twitter.png"></li></a>
+				<a href="https://www.youtube.com/channel/UC5WufrqFj3o7FIJP9ySKF-g" class="icon"><li><img src="../static/img/youtube.png"></li></a>
+			</ul>
+			<p>
+				© Муниципальное автономное общеобразовательное учреждение<br>"Средняя общеобразовательная школа № 146 с углубленным изучением математики, физики, информатики" г.Перми, 2003-2021 гг.
+			</p>
+		</footer>
+	</body>
+</html>

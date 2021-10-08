@@ -4,35 +4,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="card">
-        <header class="card-header">Вход</header>
-        <form class="card-body" method="POST">
-            {% if message %}
-            <div class="alert alert-danger">{{ message }}</div>
-            {% endif %}
+    <h1 class="content_title" align="center">ВХОД</h1><br>
+    <form class="input_content" method="POST">
+        {% if message %}
+        <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}
 
-            {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
 
-            {% for error in form.email.errors %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-            <div class="form-group">
-                <label>{{ form.email.label }}</label>
-                {{ form.email(class="form-control") }}
-            </div>
+        {% for error in form.email.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+            <label>{{ form.email.label(class="content_text") }}</label>
+            <p>{{ form.email(class="login") }}</p>
 
-            {% for error in form.password.errors %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-            <div class="form-group">
-                <label>{{ form.password.label }}</label>
-                {{ form.password(class="form-control") }}
-            </div>
+        {% for error in form.password.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+            <label>{{ form.password.label(class="content_text") }}</label>
+            <p>{{ form.password(class="login") }}</p>
 
 
-            {{ form.submit(class="btn btn-primary") }}
-        </form>
-    </div>
-</div>
+        {{ form.submit(class="login_button") }}
+    </form>
 {% endblock %}

@@ -4,50 +4,46 @@
 {% endblock %}
 
 {% block content %}
-<div class="parent">
-    <div class="registration">
-<b> Регистрация </b>
-    <form action="" method="post" class="form-w">
+<h1 class="content_title" align="center">Регистрация</h1>
+    <form action="" method="post" class="input_content">
     {{ form.hidden_tag() }}
             {{ form.csrf_token }}
             {% if message %}
             <div class="text-register">{{message}}</div>
             {% endif %}
 
-            {{ form.name.label }}<br>
-            {{ form.name(class="form-control") }}
+            {{ form.name.label(class="content_text") }}<br>
+            <p>{{ form.name(class="login") }}</p>
             {% for error in form.name.errors %}
                 <p class="text-register" role="alert">
                     {{ error }}
                 </p>
             {% endfor %}<br>
 
-            {{ form.password.label }}<br>
-            {{ form.password(class="form-control") }}
+            {{ form.password.label(class="content_text") }}<br>
+            {{ form.password(class="login") }}
             {% for error in form.password.errors %}
                 <p class="text-register" role="alert">
                     {{ error }}
                 </p>
             {% endfor %}<br>
 
-            {{ form.password_again.label }}<br>
-            {{ form.password_again(class="form-control") }}
+            {{ form.password_again.label(class="content_text") }}<br>
+            {{ form.password_again(class="login") }}
             {% for error in form.password_again.errors %}
                 <p class="text-register" role="alert">
                     {{ error }}
                 </p>
             {% endfor %}<br>
 
-            {{ form.email.label }}<br>
-            {{ form.email(class="form-control", type="email") }}
+            {{ form.email.label(class="content_text") }}<br>
+            {{ form.email(class="login", type="email") }}
             {% for error in form.email.errors %}
                 <p class="text-register" role="alert">
                     {{ error }}
                 </p>
             {% endfor %}<br>
 
-            {{ form.submit(type="submit", class="register-button") }}
+            {{ form.submit(type="submit", class="login_button") }}
     </form>
-    </div>
-</div>>
 {% endblock %}

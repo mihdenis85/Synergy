@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<content>
 <main class="container">
     <h2>{{ add_edit }} новой статьи</h2>
     <form method="post" enctype="multipart/form-data">
@@ -41,5 +42,6 @@
         <button class="btn btn-secondary text-center position-relative" style="margin-left: 10px;"><a class="button-note-text stretched-link" href="/tasks" style="text-decoration: none; color: #ccf;">Back</a></button>
     </form>
 </main>
+    </content>
 
 {% endblock %}

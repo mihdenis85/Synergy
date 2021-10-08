@@ -4,15 +4,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="parent">
-    <div class="auth">
-    <b>Изменение данных аккаунта</b>
-    <form class="card-body" method="POST">
+    <h1 class="content_title" align="center">Изменение данных аккаунта</h1><br>
+    <form class="input_content" method="POST">
         {% if message %}
         <div class="text">{{ message }}</div>
         {% endif %}
 
         {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
 
         {{ form.email.label }}<br>
         {% for error in form.email.errors %}
@@ -41,6 +40,4 @@
 
         {{ form.submit() }}
              </form>
-        </div>
-</div>
 {% endblock %}

@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		<script type="text/javascript" src="../static/js/script.js"></script>
+		<script type="text/javascript" src="../static/js/content.js"></script>
 		{% block head %}
 		{% endblock %}
 	</head>
@@ -16,47 +16,33 @@
 		<!-- Header part -->
 		<header id="header">
 			<div class="logo" id="top_menu_logo">
-				<img src="../static/img/logo.png" alt="logo">
+				<a href="/">
+					<img src="../static/img/logo.png" alt="logo">
+				</a>
 			</div>
 			<div id="top_menu" class="menu">
 				<ul class="point_menu">
-					<a href="#" class="point_of_menu"><li>Войти<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Галерея<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Новости<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Олимпиады<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Архив газеты<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Столовая<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Аттестации<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Расписание<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>Предметы<hr class="menu_line"></li></a>
-					<a href="#" class="point_of_menu"><li>О школе<hr class="menu_line"></li></a>
+					{% if current_user.is_authenticated %}
+                    <a href="/user_info" class="point_of_menu"><li>{{ current_user.name }}<hr class="menu_line"></li></a>
+                    {% else %}
+                    <a href="/login" class="point_of_menu"><li>Войти<hr class="menu_line"></li></a>
+                    {% endif %}
+					<a href="content.html" class="point_of_menu"><li>Галерея<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Новости<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Олимпиады<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Архив газеты<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Столовая<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Аттестации<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Расписание<hr class="menu_line"></li></a>
+					<a href="content.html" class="point_of_menu"><li>Предметы<hr class="menu_line"></li></a>
+					<a href="index.html" class="point_of_menu"><li>О школе<hr class="menu_line"></li></a>
 				</ul>
 			</div>
 		</header>
-		<!-- Slider -->
-		<div class="slider" id="slider">
-			<div class="slider_background">
-				<a href="#" onclick="prev_slide()">
-					<div class="arrow">
-						<img src="../static/img/left_arrow.png">
-					</div>
-				</a>
-				<div class="slider_container" id="slide">
-					<h1 id="slider_h"></h1>
-					<p id="slider_text"></p>
-				</div>
-				<a href="#" onclick="next_slide()">
-					<div class="arrow">
-						<img src="../static/img/right_arrow.png">
-					</div>
-				</a>
-			</div>
-		</div>
 		<!-- Main part -->
-		<content class="tiles">
+		<content>
 		{% block content %}
         {% endblock %}
-
 		</content>
 		<!-- Fotter part -->
 		<footer>
