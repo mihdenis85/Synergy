@@ -6,12 +6,17 @@
 {% block content %}
     <h1 class="content_title" align="center">ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ</h1>
     <div class="input_content">
-        <p class="content_text">Имя:</p>
-        <p class="login">{{ current_user.name }}</p>
-        <p class="content_text">Электронная почта: </p>
-        <p class="login">{{ current_user.email }}</p>
-        <a href="/edit_user_info"><button class="login_button">Изменить</button></a> <br>
-        <a href="/logout"><button class="login_button">Выйти </button></a>
+	    <div class="user_content">
+	        <p class="content_text">Имя:</p>
+	        <p class="content_text">{{ current_user.name }}</p>
+	        <p class="content_text">Электронная почта: </p>
+	        <p class="content_text">{{ current_user.email }}</p>
+	        <a href="/edit_user_info"><button class="login_button">Изменить</button></a> <br>
+	        <a href="/logout"><button class="login_button">Выйти </button></a>
+    	</div>
+    	<div>
+    		<a href="/add_article"><button class="login_button">Написать статью</button></a> <br>
+    	</div>
     </div>
 
 {% endblock %}

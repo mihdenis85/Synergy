@@ -114,6 +114,7 @@ content {
 .icon {
 	opacity: 0.5;
 	transition: 0.5s;
+	width: 100%;
 }
 .menu_line {
 	opacity: 0;
@@ -334,9 +335,15 @@ content {
 .content_text {
 	color: #304574;
 	font-size: 14pt;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 .input_content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+.user_content {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -362,6 +369,23 @@ content {
 	padding-bottom: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+.alert-danger {
+	color: #304574;
+	font-size: 14pt;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.form-control {
+  	border-radius: 10px;
+  	border: none;
+  	color: white;
+  	background-color: #FF9700AD;
+  	padding: 5px;
+  	width: 100%;
+}
+.content_text_h {
+	margin-bottom: 10px;
 }
 
 .point_of_menu:hover .menu_line{
