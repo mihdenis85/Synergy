@@ -10,6 +10,7 @@ body {
     background-size: cover;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 a {
 	text-decoration: none;
@@ -107,14 +108,13 @@ content {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: auto;
-	width: 10%;
 	margin: auto;
+	width: 17%;
 }
 .icon {
 	opacity: 0.5;
 	transition: 0.5s;
-	width: 100%;
+	width: 50%;
 }
 .menu_line {
 	opacity: 0;
@@ -380,9 +380,9 @@ content {
   	border-radius: 10px;
   	border: none;
   	color: white;
-  	background-color: #FF9700AD;
   	padding: 5px;
   	width: 100%;
+  	background-color: #85A8D9;
 }
 .content_text_h {
 	margin-bottom: 10px;
