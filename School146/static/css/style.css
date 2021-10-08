@@ -328,18 +328,15 @@ content {
 	padding-top: 20px;
 }
 .content_images {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	position: flex;
 }
 .content_text {
 	color: #304574;
 	font-size: 14pt;
-	padding-top: 10px;
 }
 .input_content {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 }
@@ -381,8 +378,12 @@ content {
   	border: none;
   	color: white;
   	padding: 5px;
-  	width: 100%;
+  	width: 80vw;
   	background-color: #85A8D9;
+}
+.text-control {
+	height: 200px;
+	width: 80vw;
 }
 .content_text_h {
 	margin-bottom: 10px;

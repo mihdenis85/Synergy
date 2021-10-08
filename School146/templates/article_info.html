@@ -5,15 +5,13 @@
 
 {% block content %}
 <div class="container mt-4" style="margin: 0 2%;" >
-<p>
-    <b> {{ title }} </b><br><br>
-    <b> {{ text }} </b> <br>
-    <img src="../static/user_img/{{ picture }}" alt="Image" width="100%" height="100%">
+    <p class="content_title"> {{ title }} </p>
+    <p class="content_text"> {{ text }} </p>
+    <img src="../static/user_img/{{ picture }}" alt="Image" class="content_img">
     {% if editable %}
-    <a href="#"> Изменить </a> <br>
+    <a href="#"> Изменить </a>
     {% else %}
     {% endif %}
-</p>
 </div>
 
 {% endblock %}

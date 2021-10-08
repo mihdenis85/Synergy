@@ -10,10 +10,10 @@
         <div class="text">{{ message }}</div>
         {% endif %}
 
-        {{ form.hidden_tag() }}
-        {{ form.csrf_token }}
+        <p class="content_text" align="center">{{ form.hidden_tag() }}</p>
+        <p class="content_text" align="center">{{ form.csrf_token }}</p>
 
-        {{ form.email.label }}<br>
+        <p class="content_text" align="center">{{ form.email.label }}</p>
         {% for error in form.email.errors %}
             <div class="alert alert-danger">{{ error }}</div>
         {% endfor %}
@@ -21,7 +21,7 @@
             {{ form.email(class="form-control") }}
         </div>
 
-        {{ form.name.label }}<br>
+        <p class="content_text" align="center">{{ form.name.label }}</p>
         {% for error in form.name.errors %}
             <div class="alert alert-danger">{{ error }}</div>
         {% endfor %}
@@ -29,7 +29,7 @@
             {{ form.name(class="form-control") }}
         </div>
 
-        {{ form.password.label }}<br>
+        <p class="content_text" align="center">{{ form.password.label }}</p>
         {% for error in form.password.errors %}
             <div class="alert alert-danger">{{ error }}</div>
         {% endfor %}
@@ -38,6 +38,6 @@
         </div>
 
 
-        {{ form.submit() }}
+        <p class="simple-line content_text" align="center">{{ form.submit(class="login_button") }}</p>
              </form>
 {% endblock %}
