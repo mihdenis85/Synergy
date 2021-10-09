@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<content>
+    <main class="container user_content">
+        <h2 class="content_text">{{ add_edit }} статьи</h2>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+
+            <p class="content_text" align="center">
+                <p class="content_text" align="center">{{ form.title.label }}</p>
+                {{ form.title(class="form-control") }}
+                {% for error in form.title.errors %}
+                <p class="alert alert-danger content_text" role="alert" align="center">
+                    {{ error }}
+                </p>
+                {% endfor %}
+            </p>
+
+            <p class="content_text" align="center">
+                <p class="content_text" align="center">{{ form.text.label }}</p>
+                <p class="content_text" align="center">{{ form.text(class="form-control text-control") }}</p>
+                {% for error in form.text.errors %}
+                <p class="alert alert-danger content_tex" role="alert" align="center">
+                    {{ error }}
+                </p>
+                {% endfor %}
+            </p>
+
+            <p class="content_text" align="center">
+                <p class="content_text" align="center">{{ form.picture.label }}</p>
+                {{ form.picture(class="form-control content_text", type="file", accept=".jpg,.png") }}
+                {% for error in form.text.errors %}
+                <p class="alert alert-danger content_tex" role="alert" align="center">
+                    {{ error }}
+                </p>
+                {% endfor %}
+            </p>
+
+            <p class="simple-line content_text" align="center">{{ form.submit(type="submit", class="btn btn-primary login_button") }}</p>
+        </form>
+    </main>
+</content>
+
+{% endblock %}

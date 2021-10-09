@@ -10,6 +10,7 @@ from School146.data import db_session
 from School146.data.models import Article
 from School146.data.models.users import User
 from School146.forms import RegisterForm, LoginForm, ArticleForm, EditUserForm
+from School146.forms.edit_article_form import EditArticleForm
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 UPLOAD_FOLDER = '/users_photo'
@@ -147,6 +148,37 @@ def add_article():
         db.close()
         return redirect('/')
     return render_template('add_article.html', form=form, add_edit="Добавление")
+
+
+@app.route('/edit_article/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_article(id):
+    db = db_session.create_session()
+    article = db.query(Article).filter(Article.id == id).first()
+    if article:
+        all_data = {
+            'title': article.title,
+            'text': article.text
+        }
+        form = EditArticleForm(data=all_data)
+        if form.validate_on_submit():
+            article.title = form.title.data
+            article.text = form.text.data
+            if form.picture.data:
+                assets_dir = os.path.join(
+                    os.path.dirname(app.instance_path), 'School146/static/user_img'
+                )
+                f = form.picture.data
+                filename = secure_filename(f.filename)
+                article.picture = filename
+                f.save(os.path.join(assets_dir, filename))
+            db.commit()
+            db.close()
+            return redirect('/')
+        db.close()
+        return render_template('edit_article.html', form=form, add_edit="Изменение")
+    db.close()
+    return redirect('/')
 
 
 @app.route('/article_info/<int:id>', methods=['GET', 'POST'])
