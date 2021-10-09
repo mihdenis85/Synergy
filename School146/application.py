@@ -144,7 +144,19 @@ def article_info(id):
     else:
         editable = False
     return render_template('article_info.html', title=article.title, text=article.text, picture=article.picture,
-                           editable=editable)
+                           editable=editable, id=id)
+
+
+@app.route('/delete_article/<int:id>')
+@login_required
+def delete_article(id):
+    db = db_session.create_session()
+    article = db.query(Article).filter(Article.id == id).first()
+    if article:
+        db.delete(article)
+        db.commit()
+        db.close()
+    return redirect('/')
 
 
 @app.route('/edit_user_info', methods=['GET', 'POST'])
@@ -179,6 +191,16 @@ def edit_user_info():
 @app.route('/school_plan')
 def school_plan():
     return render_template('school_plan.html')
+
+
+@app.route('/timetable')
+def timetable():
+    return render_template('timetable.html')
+
+
+@app.route('/about_school')
+def about_school():
+    return render_template('about_school.html')
 
 
 @app.route('/canteen')

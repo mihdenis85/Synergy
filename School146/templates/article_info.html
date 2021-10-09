@@ -10,6 +10,7 @@
     <p class="content_text"> {{ text }} </p>
     {% if editable %}
     	<a href="#" align="center"><p align="center" class="login_button" style="margin-left: 40%; width: 20%;">Изменить</p></a>
+        <a href="/delete_article/{{ id }}" align="center"><p align="center" class="login_button" style="margin-left: 40%; width: 20%;">Удалить</p></a>
     {% else %}
     {% endif %}
 </div>
