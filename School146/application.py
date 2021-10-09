@@ -181,6 +181,11 @@ def school_plan():
     return render_template('school_plan.html')
 
 
+@app.route('/canteen')
+def canteen():
+    return render_template('canteen.html')
+
+
 @app.route('/user_info')
 @login_required
 def user_info():
