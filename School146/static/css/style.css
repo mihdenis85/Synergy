@@ -351,6 +351,7 @@ content {
 	border-radius: 10px;
 	padding: 10px;
 	background-color: #2E74B0B2; 
+	margin-bottom: 10px;
 }
 .article_text {
 	z-index: 1;
@@ -428,6 +429,13 @@ content {
 	width: 80vw;
 }
 .content_text_h {
+	margin-bottom: 10px;
+}
+.timetable_img {
+	width: 90%;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #2E74B0B2; 
 	margin-bottom: 10px;
 }
 
