@@ -30,7 +30,7 @@
 					<a href="/canteen" class="point_of_menu"><li>Столовая<hr class="menu_line"></li></a>
 					<a href="https://s146.ru/interim" class="point_of_menu"><li>Аттестация<hr class="menu_line"></li></a>
 					<a href="/timetable" class="point_of_menu"><li>Расписание<hr class="menu_line"></li></a>
-					<a href="https://school.permkrai.ru/" class="point_of_menu"><li>Предметы<hr class="menu_line"></li></a>
+					<a href="https://contester.s146.ru/ru/" class="point_of_menu"><li>Предметы<hr class="menu_line"></li></a>
 					<a href="https://regionolymp.ru/" class="point_of_menu"><li>Олимпиады<hr class="menu_line"></li></a>
 					<a href="https://s146.ru/shum" class="point_of_menu"><li>ШЮМ<hr class="menu_line"></li></a>
 					<a href="https://vk.com/mathperm2021" class="point_of_menu"><li>ФМЛ<hr class="menu_line"></li></a>
@@ -59,43 +59,43 @@
 		</div>
 		<!-- Main part -->
 		<content class="tiles">
-	        <a href="content.html" class="tile post-1">
+	        <a href="/article_info/{{ index1 }}" class="tile post-1">
 				<div class="article">
 					<div class="article_text">
-		                <h2 class="article_h" id="article_h_0">Lorem ipsum dolor sit amet</h2>
-		                <p class="article_p" id="article_text_0">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
+		                <h2 class="article_h" id="article_h_0">{{ article1.title }}</h2>
+		                <p class="article_p" id="article_text_0">{{ article1.text[:100] }}</p>
 	            	</div>
 	            </div>
         	</a>
             <div class="tile post-2"></div>
             <div class="tile post-3"></div>
             <div class="tile post-4"></div>
-	        <a href="content.html" class="tile post-5">
+	        <a href="/article_info/{{ index2 }}" class="tile post-5">
 	            <div class="article">
 					<div class="article_text">
-		                <h2 class="article_h" id="article_h_1">Lorem ipsum dolor sit amet</h2>
-		                <p class="article_p" id="article_text_1">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
+		                <h2 class="article_h" id="article_h_1">{{ article2.title }}</h2>
+		                <p class="article_p" id="article_text_1">{{ article2.text[:100] }}</p>
 	            	</div>
 	            </div>
         	</a>
             <div class="tile post-6"></div>
-	        <a href="content.html" class= "tile post-11">
+	        <a href="/article_info/{{ index3 }}" class= "tile post-11">
 	       		<div class="article">
 					<div class="article_text">
-		                <h2 class="article_h" id="article_h_2">Lorem ipsum dolor sit amet</h2>
-		                <p class="article_p" id="article_text_2">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
+		                <h2 class="article_h" id="article_h_2">{{ article3.title }}</h2>
+		                <p class="article_p" id="article_text_2">{{ article3.text[:100] }}</p>
 	            	</div>
 	            </div>
         	</a>
             <div class="tile post-8"></div>
             <div class="tile post-9"></div>
             <div class="tile post-10"></div>
-	        <a href="content.html" class="tile post-7">
+	        <a href="/article_info/{{ index4 }}" class="tile post-7">
 	        	<div class="article">
 					<div class="article_text">
-		                <h2 class="article_h" id="article_h_3">Lorem ipsum dolor sit amet</h2>
-		                <p class="article_p" id="article_text_3">Quisque nisi libero, egestas non bibendum quis, sodales facilisis libero. Nulla ultricies ipsum et lobortis ultrices.</p>
-	            	</div>
+		            	<h2 class="article_h" id="article_h_3">{{ article4.title }}</h2>
+		                <p class="article_p" id="article_text_3">{{ article4.text[:100] }}</p>
+					</div>
 	            </div>
         	</a>
             <div class="tile post-12"></div>
