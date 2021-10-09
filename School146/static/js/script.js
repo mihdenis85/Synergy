@@ -49,6 +49,10 @@ function main() {
     let img = document.getElementById("article_img_" + str(i));
     img.style = "background: url(../static/img/" + article_img[i] + ") no-repeat;";
   }
+  let elem = document.getElementById("slider");
+  let data = elem.getBoundingClientRect();
+  let subheader = document.querySelector(".subheader");
+  subheader.style = "height: " + str(data.y + data.height) + ";";
 }
 function setup() {
   let slide = document.getElementById("slider");

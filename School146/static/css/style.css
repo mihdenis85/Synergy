@@ -80,7 +80,6 @@ content {
 	padding-bottom: 10px;
 	align-items: center;
 }
-
 .logo {
 	display: flex;
 	width: 10%;
@@ -104,6 +103,36 @@ content {
 	text-align: center;
 	font-size: 12pt;
 }
+.submenu {
+	-webkit-transform: scaleY(0);
+	-ms-transform: scaleY(0);
+	transform: scaleY(0);
+	-webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+}
+.point_of_submenu {
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-size: 12pt;
+}
+.submenu_line {
+	opacity: 0;
+	transition: 0.5s;
+	margin: 0px;
+	width: 0%;
+	height: 0.5px;
+	margin-left: 10%;
+	margin-top: 5px;
+	border-color: white;
+	background-color: white;
+}
 .icons {
 	display: flex;
 	flex-direction: row;
@@ -126,6 +155,18 @@ content {
 	margin-top: 5px;
 	border-color: white;
 	background-color: white;
+}
+.subheader{
+	opacity: 0;
+	transition: 0.5s;
+	-webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 100%;
+	background-color: #2E74B0B2;
 }
 #top_menu_logo {
 	opacity: 1;
@@ -305,10 +346,11 @@ content {
   	transition: 0.5s;
 }
 .article_img {
-	float: left;
-	width: 20%;
-	height: auto;
-	margin-right: 2%;
+	height: 60vh;
+	width: auto;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #2E74B0B2; 
 }
 .article_text {
 	z-index: 1;
@@ -351,6 +393,9 @@ content {
 	padding-right: 1%;
 	color: white;
 	font-size: 20px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 .login_button {
 	border: none;
@@ -390,6 +435,19 @@ content {
 	opacity: 1;
 	transition: 0.5s;
 	width: 80%;
+}
+.group:hover .submenu{
+	-webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: 0.5s;
+}
+.point_of_submenu:hover .subheader{
+	opacity: 1;
+	transition: 0.5s;
+	-webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
 }
 .icon:hover {
 	opacity: 1;
