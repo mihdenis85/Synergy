@@ -176,6 +176,11 @@ def edit_user_info():
     return render_template('edit_user_info.html', form=form)
 
 
+@app.route('/school_plan')
+def school_plan():
+    return render_template('school_plan.html')
+
+
 @app.route('/user_info')
 @login_required
 def user_info():
