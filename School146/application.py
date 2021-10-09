@@ -38,22 +38,8 @@ def load_user(user_id):
 def index():
     db = db_session.create_session()
     articles = db.query(Article).all()
-    if len(articles) < 4:
-        article1 = 'Пусто'
-        article2 = 'Пусто'
-        article3 = 'Пусто'
-        article4 = 'Пусто'
-    else:
-        article1 = articles[-1]
-        article2 = articles[-2]
-        article3 = articles[-3]
-        article4 = articles[-4]
-        index1 = len(articles)
-        index2 = len(articles) - 1
-        index3 = len(articles) - 2
-        index4 = len(articles) - 3
-    return render_template('index.html', article1=article1, article2=article2, article3=article3, article4=article4,
-                           index1=index1, index2=index2, index3=index3, index4=index4)
+    articles_length = len(articles)
+    return render_template('index.html', articles=articles, length=articles_length)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -170,6 +156,10 @@ def edit_article(id):
                 )
                 f = form.picture.data
                 filename = secure_filename(f.filename)
+                try:
+                    os.remove(os.path.join(assets_dir, article.picture))
+                except Exception:
+                    pass
                 article.picture = filename
                 f.save(os.path.join(assets_dir, filename))
             db.commit()
@@ -202,6 +192,14 @@ def delete_article(id):
     db = db_session.create_session()
     article = db.query(Article).filter(Article.id == id).first()
     if article:
+        assets_dir = os.path.join(
+            os.path.dirname(app.instance_path), 'School146/static/user_img'
+        )
+        filename = article.picture
+        try:
+            os.remove(os.path.join(assets_dir, filename))
+        except Exception:
+            pass
         db.delete(article)
         db.commit()
         db.close()
