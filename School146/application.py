@@ -182,6 +182,16 @@ def user_info():
     return render_template('user_info.html')
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('error.html', text='Ошибка 404. Не найдено')
+
+
+@app.errorhandler(500)
+def not_found(error):
+    return render_template('error.html', text='Ошибка 500')
+
+
 @app.errorhandler(401)
 def unauth(error):
     return redirect(url_for('index'))
