@@ -6,10 +6,10 @@
 {% block content %}
 <div class="container mt-4">
     <p class="content_title">Статьи</p>
-    <p class="content_text">
-    	<ul>
+    <p class="content_text" align="center">
+    	<ul class="content_list">
 	{% for article in articles %}
-    		<a href="/article_info/{{ article.id }}" class="content_text"><li class="content_text">{{ article.title }}</li></a>
+    		<a href="/article_info/{{ article.id }}" class="content_text" align="center"><li class="content_text content_point">{{ article.title }}</li></a>
 	{% endfor %}
 </ul>
     </p>
