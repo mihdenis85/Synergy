@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <p class="content_title">Статьи</p>
+    <p class="content_text">
+    	<ul>
+	{% for article in articles %}
+    		<a href="/article_info/{{ article.id }}" class="content_text"><li class="content_text">{{ article.title }}</li></a>
+	{% endfor %}
+</ul>
+    </p>
+</div>
+
+{% endblock %}

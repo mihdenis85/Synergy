@@ -108,6 +108,15 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/articles')
+def articles():
+    db = db_session.create_session()
+    articles = db.query(Article).all()
+    articles_length = len(articles)
+    db.close()
+    return render_template('articles.html', articles=articles, length=articles_length)
+
+
 @app.route('/add_article', methods=['GET', 'POST'])
 @login_required
 def add_article():
@@ -132,7 +141,7 @@ def add_article():
         db.add(article)
         db.commit()
         db.close()
-        return redirect('/')
+        return redirect('/articles')
     return render_template('add_article.html', form=form, add_edit="Добавление")
 
 
@@ -164,11 +173,11 @@ def edit_article(id):
                 f.save(os.path.join(assets_dir, filename))
             db.commit()
             db.close()
-            return redirect('/')
+            return redirect('/articles')
         db.close()
         return render_template('edit_article.html', form=form, add_edit="Изменение")
     db.close()
-    return redirect('/')
+    return redirect('/articles')
 
 
 @app.route('/article_info/<int:id>', methods=['GET', 'POST'])
@@ -203,7 +212,7 @@ def delete_article(id):
         db.delete(article)
         db.commit()
         db.close()
-    return redirect('/')
+    return redirect('/articles')
 
 
 @app.route('/edit_user_info', methods=['GET', 'POST'])
